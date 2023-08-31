@@ -1,0 +1,22 @@
+package com.example.demo;
+
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class KafkaController {
+
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
+    public KafkaController(KafkaTemplate<String, String> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    @PostMapping("/send")
+    public String sendMessage(@RequestBody String message) {
+        kafkaTemplate.send("deadletter", message);
+        return "Message sent to Kafka topic: " + message;
+    }
+}

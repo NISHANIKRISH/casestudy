@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "spring.kafka.topic.warning",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.kafka.topic.warning'"
+  },
+  {
+    "name": "spring.kafka.topic.messages",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.kafka.topic.messages'"
+  },
+  {
+    "name": "spring.kafka.topic.dead-letter",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.kafka.topic.dead-letter'"
+  }
+]}

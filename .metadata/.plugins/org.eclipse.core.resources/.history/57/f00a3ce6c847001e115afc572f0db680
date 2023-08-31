@@ -1,0 +1,26 @@
+package com.example.demo;
+
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+@Service
+public class KafkaConsumerService {
+
+    private final DeadLetterRepository deadLetterRepository;
+
+    public KafkaConsumerService(DeadLetterRepository deadLetterRepository) {
+        this.deadLetterRepository = deadLetterRepository;
+    }
+
+    @KafkaListener(topics = "deadletter")
+    public void consume(String message) {
+        // Check for dead letter pattern and perform actions
+
+        // If it's a dead letter
+        if (message.contains("dead-letter-pattern")) {
+            DeadLetterMessage deadLetter = new DeadLetterMessage();
+            deadLetter.setContent(message);
+            deadLetterRepository.save(deadLetter);
+        }
+    }
+}

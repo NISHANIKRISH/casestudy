@@ -1,0 +1,10 @@
+spring.kafka.consumer.bootstrap-servers=9092
+spring.kafka.consumer.group-id=DeadLetterQueue
+spring.kafka.consumer.auto-offset-reset=earliest
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+
+spring.datasource.url=jdbc:postgresql://<database-host>:<database-port>/<database-name>
+spring.datasource.username=root
+spring.datasource.password=root@012
+spring.jpa.hibernate.ddl-auto=update
